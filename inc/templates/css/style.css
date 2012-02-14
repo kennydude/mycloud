@@ -1,0 +1,64 @@
+.bigmoanbox{
+	text-align: center;
+	margin-top: 60px;
+	padding: 10px;
+	border-radius: 10px 10px;
+	background: #FF9494;
+	box-shadow: #ccc 0px 0px 10px;
+}
+.header{
+	background: #333;
+	padding: 20px;
+	padding-bottom: 10px;
+	border-bottom: #999 5px solid;
+	color: #fff;
+	margin-bottom: 20px;
+}
+.header h1{
+	margin: 5px 0px;
+	color: #fff;
+	font-size: 20px;
+}
+.header a{
+	color: #fff;
+}
+.header a:hover{
+	color: #eee;
+}
+.frontpage{
+	border-bottom: solid 1px #CCC;
+	margin-bottom: 24px;
+}
+.center{
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: solid 1px #CCC;
+	text-align: center;
+}
+.inline{
+	display: inline !important;
+}
+input.tiny{
+	width: 30px;
+}
+input.supertiny{
+	width: 20px;
+}
+.padding-top{
+	padding-top: 24px;
+}
+.full-width{width:100% !important;}
+.large{font-size:20px !important;}
+.mountbox{
+	margin: 0 auto;
+	width:260px;
+	padding: 10px;
+	text-align: left;
+}
+input.super-oversize{
+	width: 100%;
+	font-size: 25px !important;
+}
+*{
+	font-family: "Ubuntu", "Helvetica Neue", "Helvetica", Arial, sans-serif !important;
+}
