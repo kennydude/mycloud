@@ -39,10 +39,10 @@
 	display: inline !important;
 }
 input.tiny{
-	width: 30px;
+	width: 30px !important;
 }
 input.supertiny{
-	width: 20px;
+	width: 20px !important;
 }
 .padding-top{
 	padding-top: 24px;

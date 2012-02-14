@@ -32,4 +32,27 @@ class Date{
 				return $this->fdate("i") * 1;
 		}
 	}
+
+	function __set($key, $value){
+		$d = new DateTime();
+		$d->settimestamp($this->timestamp + '');
+		switch($key){
+			case "day":
+				$d->setDate($value, $this->month, $this->year);
+				break;
+			case "month":
+				$d->setDate($this->day, $value, $this->year);
+				break;
+			case "year":
+				$d->setDate($this->day, $this->month, $value);
+				break;
+			case "hour":
+				$d->setTime($value, $this->hour);
+				break;
+			case "minute":
+				$d->setTime($this->minute, $value);
+				break;
+		}
+		$this->timestamp = $d->gettimestamp();
+	}
 }

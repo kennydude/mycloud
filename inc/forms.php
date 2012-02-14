@@ -162,8 +162,11 @@ class BeanForm extends Form{
 					$field->stored_bean($this->bean);
 				}
 			}
-
-			echo "stored. todo redir";
+			$_GET['id'] = $this->bean->id;
+			$_GET['updated'] = "true";
+			
+			header("Location: " . curPageURL());
+			die("Form has saved data. You are being redirected");
 		}
 	}
 }
@@ -377,13 +380,14 @@ class DateTimeField extends Field{
 
 		echo ":";
 
-		$field = new Field( $this->name . "[min]", _("Mins"), "text", array("inline", "supertiny") );
+		$field = new Field( $this->name . "[minute]", _("Mins"), "text", array("inline", "supertiny") );
 		$field->value = $this->value->minute;
 		$field->render();
 
 		echo '</div>';
 
 		echo '</div>';
+		$this->render_error();
 	}
 
 	public function save_to_bean($bean){
@@ -393,13 +397,30 @@ class DateTimeField extends Field{
 		$this->value = new Date($bean->{$this->name});
 	}
 
+	public function setval($value, $v){
+		if(trim($value[$v]) == ""){
+			throw new Exception("You must enter a value", 1);
+		}
+		$this->value->$v = ($value[$v] * 1);
+	}
+
 	public function validate(){
 		$value = $_POST[$this->name];
 		if($value['rightnow'] == "on"){
 			$this->value = new Date();
 			return true;
 		} else{
-			// TODO
+			try {
+				$this->setval($value, "day");
+				$this->setval($value, "month");
+				$this->setval($value, "year");
+				$this->setval($value, "hour");
+				$this->setval($value, "minute");
+			} catch (Exception $e) {
+				$this->error = $e;
+				return false;
+			}
+			return true;
 		}
 		return false;
 	}
