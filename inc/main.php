@@ -55,6 +55,19 @@ function curPageURL() {
 	return $pageURL;
 }
 
+function dir_contents($dir){
+	$r = array();
+	if ($handle = opendir($dir)) {
+		while (false !== ($entry = readdir($handle))) {
+			if ($entry != "." && $entry != "..") {
+				$r[] = $entry;
+			}
+		}
+		closedir($handle);
+	}
+	return $r;
+}
+
 function get_posts(){
 	start_db();
 	return R::find("post", "1 ORDER BY published DESC LIMIT 0, 10");

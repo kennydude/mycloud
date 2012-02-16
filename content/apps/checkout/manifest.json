@@ -1,0 +1,10 @@
+{
+	"name" : "Checkout",
+	"description" : "Provides a Checkout system for your Application",
+	"settings" : {
+		"sandbox" : {
+			"type" : "checkbox",
+			"default" : true
+		}
+	}
+}

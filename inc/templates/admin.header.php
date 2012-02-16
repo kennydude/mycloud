@@ -5,11 +5,16 @@ include "header.php";
 function a($in){
 	if(PAGE == $in){ echo ' class="active"'; }
 }
+function s($in){
+	if(SUBPAGE == $in){ echo ' class="active"'; }
+}
 
 function n(){
 	global $apps;
 	?>
-<dd><a href="index.php"<?php a("ad_dash"); ?>><?php L("Dashboard"); ?></a></dd>
+<dd>
+	<a href="index.php"<?php a("ad_dash"); ?>><?php L("Dashboard"); ?></a>
+</dd>
 <dd><a href="posts.php"<?php a("ad_posts"); ?>><?php L("Posts"); ?></a></dd>  	
 	<?php
 	foreach($apps as $key => $value){
@@ -37,4 +42,13 @@ function n(){
 			<?php if(function_exists("sidebar")) { sidebar(); } ?>
 		</div>
 		<div class="ten columns">
-
+			<?php
+				global $admin_tabs;
+				if($admin_tabs){
+			?>
+			<dl class="nice sub-nav">
+				<?php foreach($admin_tabs as $url => $v){ ?>
+				<dd<?php s($v['key']); ?>><a href="<?php echo $url; ?>"><?php echo $v['name']; ?></a></dd>
+				<?php } ?>
+			</dl>
+			<?php } ?>

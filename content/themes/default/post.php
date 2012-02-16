@@ -8,7 +8,7 @@ if(!defined("INLINE")){
 <?php if(!defined("INLINE")){
 	?>
 <div class="content">
-<?php echo $context->body; ?>
+<?php echo parse_code($context->body); ?>
 </div>
 comments etc
 	<?php

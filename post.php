@@ -6,6 +6,8 @@ require("inc/main.php");
 start_db();
 $post = R::load("post", $_GET['id']);
 
+require("inc/parser.php");
+
 if(!$post->id){
 	do_404();
 	display_template("404", null);

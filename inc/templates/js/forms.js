@@ -6,13 +6,26 @@ function ddo(on, name){
 
 /* checkbox dependency function */
 function checkb(){
-	if($(this).attr("checked") == "checked"){
+	if($(this).attr("checked")){
 		$(ddo("off", $(this).attr("name")) ).attr("disabled", "disabled");
 		$(ddo("on", $(this).attr("name")) ).removeAttr("disabled");
 	} else{
 		$(ddo("off", $(this).attr("name")) ).removeAttr("disabled");
 		$(ddo("on", $(this).attr("name")) ).attr("disabled", "disabled");
 	}
+}
+
+function activateTab($tab) {
+	var $activeTab = $tab.closest('dl').find('a.active'),
+			contentLocation = $tab.attr("href") + 'Tab';
+
+	//Make Tab Active
+	$activeTab.removeClass('active');
+	$tab.addClass('active');
+
+	//Show Tab Content
+	$(contentLocation).closest('.tabs-content').children('li').hide();
+	$(contentLocation).show();
 }
 
 /* make tag field */
@@ -68,5 +81,12 @@ $(document).ready(function(){
 			}
 		});
 		console.log("done");
+	});
+	$('dl.tabs').each(function () {
+		//Get all tabs
+		var tabs = $(this).children('dd').children('a');
+		tabs.click(function (e) {
+			activateTab($(this));
+		});
 	});
 });

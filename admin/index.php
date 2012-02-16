@@ -3,7 +3,9 @@
 
 define("PAGE", "ad_dash");
 define("ROOT", "../");
-require("../inc/main.php");
+define("SUBPAGE", "dash");
+require("common.php");
+dashboard_tabs();
 
 define("PAGE_TITLE", _("Admin for ") . $blogName);
 
